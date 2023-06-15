@@ -1,0 +1,7 @@
+.mat-grid-tile{
+    border: 1px solid #eee;
+    width :"110px" !important; 
+    height:"110px" !important;
+    margin-top: 10px !important;
+    margin-left:  10px;
+}
