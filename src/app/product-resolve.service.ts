@@ -13,7 +13,7 @@ export class ProductResolveService implements Resolve<Product> {
   constructor( private productService : ProductService,private imageProcessingService : ImageProcessingService) { }
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {
-    const id = route.paramMap.get("productid");
+    const id = route.paramMap.get("productId");
     if (id) {
       // we have to fetch details from backend
        return this.productService.getProductDetailsById(parseInt(id))

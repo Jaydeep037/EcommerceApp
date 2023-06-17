@@ -86,4 +86,8 @@ if(this.product && this.product.productId){
     this.product.productImages.push(fileHandle);
   }
 
+  clear(){
+    window.location.reload();
+  }
+
 }

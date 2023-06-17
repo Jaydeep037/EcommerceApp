@@ -10,6 +10,7 @@ import { AuthGuard } from './_auth/auth.guard';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 import { ProductService } from './_services/product.service';
 import { ProductResolveService } from './product-resolve.service';
+import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,10 @@ const routes: Routes = [
   product : ProductResolveService
 }
 },
+{path : 'productViewDetails',component : ProductViewDetailsComponent,
+resolve : {
+  product :ProductResolveService
+}}
 ];
 
 @NgModule({

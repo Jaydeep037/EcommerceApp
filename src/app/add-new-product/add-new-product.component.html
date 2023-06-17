@@ -25,7 +25,7 @@
                         name="productDiscountedPrice">
                     </mat-form-field>
                     <div align="center">
-                        <button mat-stroked-button color="primary" style="margin-right: 4px;">Clear</button>
+                        <button mat-stroked-button color="primary" style="margin-right: 4px;" (click)="clear()">Clear</button>
                         <button mat-stroked-button type="submit" *ngIf="isNewProduct" color="primary">Add Product</button>
                         <button mat-stroked-button type="submit" *ngIf="!isNewProduct" color="primary">Update Product</button>
                     </div>
