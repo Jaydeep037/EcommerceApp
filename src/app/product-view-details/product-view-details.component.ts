@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../_services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../_model/product.model';
 
 @Component({
@@ -11,11 +11,11 @@ import { Product } from '../_model/product.model';
      
 export class ProductViewDetailsComponent implements OnInit {
   product: Product = {} as Product;
-
   previewIndex :number =0;
 
 constructor(
-  private activateRoute :ActivatedRoute
+  private activateRoute :ActivatedRoute,
+  private router : Router
 ){}
 
   
@@ -27,6 +27,10 @@ constructor(
   previewImage(index :number){
     this.previewIndex = index;
     console.log(this.previewIndex);
+  }
+
+  buyProduct(productId : number){
+    this.router.navigate(['/buyProduct',{isSingleProductCheckout : true,productId:productId}]);
   }
 
 }
