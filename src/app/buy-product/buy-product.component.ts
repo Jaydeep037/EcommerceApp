@@ -28,7 +28,7 @@ export class BuyProductComponent implements OnInit {
     this.productDetails = this.activateRoute.snapshot.data["productDetails"];
     this.productDetails.forEach(
       x => this.orderDetails.orderProductQuantityList.push(
-        { productId: x.productId, quantity: 1 }
+        { productId: x.productId, quantity: 2 }
       )
     )
   }
@@ -43,5 +43,34 @@ export class BuyProductComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+  onQuantityChanged(q :number,productId :number){
+    this.orderDetails.orderProductQuantityList.filter(
+      (orderProduct)=>orderProduct.productId === productId
+    )[0].quantity = q;
+  }
+
+  getQuantityForProduct(productId:number){
+    const filterProduct=this.orderDetails.orderProductQuantityList.filter(
+      (quantity)=> quantity.productId==productId
+    );
+    return filterProduct[0].quantity;
+  }
+  getCalculatedTotal(productId :number,productDiscountedPrice :number){
+    const filterProduct=this.orderDetails.orderProductQuantityList.filter(
+      (quantity)=> quantity.productId==productId
+    );
+    return filterProduct[0].quantity * productDiscountedPrice;
+  }
+  getCalculatedGrandTotal(){
+    let grandTotal =0;
+     this.orderDetails.orderProductQuantityList.forEach(
+      (productQuantity)=>{
+        const price= this.productDetails.filter(
+         product=>product.productId == productQuantity.productId
+        )[0].productDiscountedPrice;
+        grandTotal = grandTotal +price * productQuantity.quantity;
+      })
+      return grandTotal;
   }
 }
