@@ -37,6 +37,7 @@ export class BuyProductComponent implements OnInit {
     this.productService.placeOrder(this.orderDetails).subscribe(
       (response) => {
         console.log(response);
+        this.router.navigate(['/confirmation']);
         _orderForm.reset();
       },
       (err) => {

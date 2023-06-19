@@ -13,6 +13,7 @@ import { ProductResolveService } from './product-resolve.service';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { BuyProductResolverService } from './buy-product-resolver.service';
+import { PlaceorderConfirmationComponent } from './placeorder-confirmation/placeorder-confirmation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ resolve : {
 resolve : {
   productDetails :BuyProductResolverService
 }
-}
+},
+{path :'confirmation',component :PlaceorderConfirmationComponent ,canActivate : [AuthGuard],data:{roles :['User']}}
 ];
 
 @NgModule({
