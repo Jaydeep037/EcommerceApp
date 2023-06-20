@@ -75,5 +75,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
+<div class="text-center mt-5">
+  <button type="submit" mat-raised-button color="primary" (click)="loadMoreProduct()">Load more</button>
+</div>  
 </div>

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
+import { User } from '../_model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class UserService {
       }
     }
     return isMatch;
+  }
+
+  public register (user : User) {
+    return this.httpclient.post(this.PATH_OF_API + '/registerNew',user);
   }
 }

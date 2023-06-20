@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
   productDetails :any = [];
+  pageNumber : number = 0;
   constructor(private productService :  ProductService,
     private imageProcessingService:ImageProcessingService,
     private router :Router
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit{
 
 
   public getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProducts(this.pageNumber)
     .pipe(
       map((products: Product[]) => products.map((product: Product) => this.imageProcessingService.createImages(product)))
       )
@@ -42,5 +43,10 @@ export class HomeComponent implements OnInit{
 
   public showProductDetails(productId :number) {
     this.router.navigate(['productViewDetails',{productId:productId}])
+  }
+
+  loadMoreProduct(){
+    this.pageNumber = this.pageNumber +1;
+    this.getAllProducts();
   }
 }

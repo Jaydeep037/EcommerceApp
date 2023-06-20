@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddNewProductComponent implements OnInit {
 
-  isNewProduct = true;
+  isNewProduct :boolean = true;
 product : Product = {
   productId : 0,
   productName : "",

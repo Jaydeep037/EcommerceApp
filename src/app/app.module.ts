@@ -30,6 +30,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 import { PlaceorderConfirmationComponent } from './placeorder-confirmation/placeorder-confirmation.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -51,7 +52,8 @@ import { PlaceorderConfirmationComponent } from './placeorder-confirmation/place
     ShowProductImagesDialogComponent,
     BuyProductComponent,
     ProductViewDetailsComponent,
-    PlaceorderConfirmationComponent
+    PlaceorderConfirmationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

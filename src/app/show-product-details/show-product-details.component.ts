@@ -23,14 +23,14 @@ export class ShowProductDetailsComponent implements OnInit {
     ) { }
   products: Product[] = [];
   displayedColumns: string[] = ['Id','Product Name', 'description', 'Product Actual Price','Product Discounted Price','Actions'];
-
+  pageNumber : number = 0;
 
   ngOnInit(): void {
   this.getAllProducts();
   }
 
   public getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProducts(this.pageNumber)
     .pipe(
       map((products: Product[]) => products.map((product: Product) => this.imageProcessingService.createImages(product)))
       )
@@ -60,7 +60,7 @@ export class ShowProductDetailsComponent implements OnInit {
 
   editProduct(productId :number) {
     console.log(productId);
-    this.router.navigate(['/addNewProduct',{productid :productId}]);  
+    this.router.navigate(['/addNewProduct',{productId :productId}]);  
     }
 
 
@@ -72,6 +72,10 @@ export class ShowProductDetailsComponent implements OnInit {
       height:'500px',
       width : '800px'
     });
+  }
+  loadMoreProduct(){
+  this.pageNumber = this.pageNumber +1;
+  this.getAllProducts();
   }
 }
 

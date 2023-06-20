@@ -14,29 +14,35 @@ import { ProductViewDetailsComponent } from './product-view-details/product-view
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { BuyProductResolverService } from './buy-product-resolver.service';
 import { PlaceorderConfirmationComponent } from './placeorder-confirmation/placeorder-confirmation.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent,canActivate : [AuthGuard],data: {roles : ['Admin']}},
-  { path: 'user', component: UserComponent,canActivate : [AuthGuard],data : {roles : ['User']}},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  {path : 'allProducts',component : ShowProductDetailsComponent ,canActivate : [AuthGuard] , data : {roles : ['Admin']}},
-  {path: 'addNewProduct', component : AddNewProductComponent,canActivate : [AuthGuard] , data : {roles : ['Admin']},
-  resolve : {
-  product : ProductResolveService
-}
-},
-{path : 'productViewDetails',component : ProductViewDetailsComponent,
-resolve : {
-  product :ProductResolveService
-}},
-{path : 'buyProduct',component :BuyProductComponent,canActivate : [AuthGuard],data:{roles :['User']},
-resolve : {
-  productDetails :BuyProductResolverService
-}
-},
-{path :'confirmation',component :PlaceorderConfirmationComponent ,canActivate : [AuthGuard],data:{roles :['User']}}
+  { path: 'allProducts', component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
+  {
+    path: 'addNewProduct', component: AddNewProductComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] },
+    resolve: {
+      product: ProductResolveService
+    }
+  },
+  {
+    path: 'productViewDetails', component: ProductViewDetailsComponent,
+    resolve: {
+      product: ProductResolveService
+    }
+  },
+  {
+    path: 'buyProduct', component: BuyProductComponent, canActivate: [AuthGuard], data: { roles: ['User'] },
+    resolve: {
+      productDetails: BuyProductResolverService
+    }
+  },
+  { path: 'confirmation', component: PlaceorderConfirmationComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
