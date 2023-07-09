@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
   productDetails :any = [];
   pageNumber : number = 0;
+  showProductbutton = false;
   constructor(private productService :  ProductService,
     private imageProcessingService:ImageProcessingService,
     private router :Router
@@ -22,10 +23,16 @@ export class HomeComponent implements OnInit{
     this.getAllProducts();
   }
 
+  searchByKeyword(searchKey: string) {
+    console.log(searchKey);
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProducts(searchKey);
+  }
 
 
-  public getAllProducts() {
-    this.productService.getAllProducts(this.pageNumber)
+  public getAllProducts(searchKey :string ="") {
+    this.productService.getAllProducts(this.pageNumber,searchKey)
     .pipe(
       map((products: Product[]) => products.map((product: Product) => this.imageProcessingService.createImages(product)))
       )
@@ -35,7 +42,12 @@ export class HomeComponent implements OnInit{
         //   this.imageProcessingService.createImages(response[i]);
         // }
        console.log(response);
-       this.productDetails = response;
+       if(response.length ==4){
+        this.showProductbutton = true;
+       }else{
+        this.showProductbutton = false;
+       }
+       response.forEach(product=>this.productDetails.push(product));
       },(error : HttpErrorResponse) =>{
         console.log(error);
       });

@@ -19,9 +19,11 @@ export class ShowProductDetailsComponent implements OnInit {
   constructor(private productService :  ProductService,
     public imageDialog : MatDialog,
     private imageProcessingService : ImageProcessingService,
-    private router :Router
+    private router :Router,
     ) { }
   products: Product[] = [];
+  showTable = false
+  showLoadMoreProduct = false;
   displayedColumns: string[] = ['Id','Product Name', 'description', 'Product Actual Price','Product Discounted Price','Actions'];
   pageNumber : number = 0;
 
@@ -30,6 +32,7 @@ export class ShowProductDetailsComponent implements OnInit {
   }
 
   public getAllProducts() {
+    this.showTable= false;
     this.productService.getAllProducts(this.pageNumber)
     .pipe(
       map((products: Product[]) => products.map((product: Product) => this.imageProcessingService.createImages(product)))
@@ -40,7 +43,15 @@ export class ShowProductDetailsComponent implements OnInit {
         //   this.imageProcessingService.createImages(response[i]);
         // }
        console.log(response);
-       this.products = response;
+       if(response.length == 4){
+        this.showLoadMoreProduct = true;
+       }else{
+        this.showLoadMoreProduct = false;
+       }
+       response.forEach(product=>this.products.push(product));
+      //  this.products = response;/
+        this.showTable = true;
+      console.log("jaydeep"+this.products);
       },(error : HttpErrorResponse) =>{
         console.log(error);
       });
