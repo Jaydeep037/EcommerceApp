@@ -15,7 +15,8 @@ export class ProductViewDetailsComponent implements OnInit {
 
 constructor(
   private activateRoute :ActivatedRoute,
-  private router : Router
+  private router : Router,
+  private productService : ProductService
 ){}
 
   
@@ -31,6 +32,17 @@ constructor(
 
   buyProduct(productId : number){
     this.router.navigate(['/buyProduct',{isSingleProductCheckout : true,productId:productId}]);
+  }
+
+  addToCart(productId :number) {
+    this.productService.addToCart(productId).subscribe(
+      (response)=>{
+        console.log(response);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
 }

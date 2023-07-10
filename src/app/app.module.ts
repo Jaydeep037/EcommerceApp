@@ -31,6 +31,7 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 import { PlaceorderConfirmationComponent } from './placeorder-confirmation/placeorder-confirmation.component';
 import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -53,7 +54,8 @@ import { RegisterComponent } from './register/register.component';
     BuyProductComponent,
     ProductViewDetailsComponent,
     PlaceorderConfirmationComponent,
-    RegisterComponent
+    RegisterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

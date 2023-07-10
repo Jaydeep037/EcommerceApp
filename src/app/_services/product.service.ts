@@ -39,4 +39,8 @@ export class ProductService {
   public placeOrder(orderDetails :OrderDetails){
     return this.httpClient.post(this.PATH_OF_API+"/placeorder",orderDetails);
   }
+
+  public addToCart(productId : number) {
+    return this.httpClient.post(this.PATH_OF_API+"/newCart/"+productId,{});
+  }
 }

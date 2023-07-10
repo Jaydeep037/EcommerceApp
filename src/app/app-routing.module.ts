@@ -42,7 +42,8 @@ const routes: Routes = [
     }
   },
   { path: 'confirmation', component: PlaceorderConfirmationComponent, canActivate: [AuthGuard], data: { roles: ['User'] } },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  {path : 'newCart',component:ProductViewDetailsComponent,canActivate:[AuthGuard],data:{roles :['User']}}
 ];
 
 @NgModule({
