@@ -43,4 +43,7 @@ export class ProductService {
   public addToCart(productId : number) {
     return this.httpClient.post(this.PATH_OF_API+"/newCart/"+productId,{});
   }
+  public getCartDetails(){
+    return this.httpClient.get(this.PATH_OF_API+"/getCartDetails",{});
+  }
 }
