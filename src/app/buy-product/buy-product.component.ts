@@ -22,19 +22,23 @@ export class BuyProductComponent implements OnInit {
     orderProductQuantityList: []
   }
 
+  public isSingleProductCheckout :boolean = false;
   constructor(private activateRoute: ActivatedRoute, private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.productDetails = this.activateRoute.snapshot.data["productDetails"];
+    const isSingleProductCheckoutString = this.activateRoute.snapshot.paramMap.get("isSingleProductCheckout");
+    this.isSingleProductCheckout = (isSingleProductCheckoutString === 'true');
     this.productDetails.forEach(
       x => this.orderDetails.orderProductQuantityList.push(
         { productId: x.productId, quantity: 2 }
       )
     )
+    
   }
 
   placeOrder(_orderForm: NgForm) {
-    this.productService.placeOrder(this.orderDetails).subscribe(
+    this.productService.placeOrder(this.orderDetails,this.isSingleProductCheckout).subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['/confirmation']);

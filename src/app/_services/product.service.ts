@@ -36,8 +36,8 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.PATH_OF_API+"/getProductDetails/"+isSingleProductCheckout+"/"+productId);
   }
 
-  public placeOrder(orderDetails :OrderDetails){
-    return this.httpClient.post(this.PATH_OF_API+"/placeorder",orderDetails);
+  public placeOrder(orderDetails :OrderDetails,isCheckOut:boolean){
+    return this.httpClient.post(this.PATH_OF_API+"/placeorder/"+isCheckOut,orderDetails);
   }
 
   public addToCart(productId : number) {
@@ -45,5 +45,8 @@ export class ProductService {
   }
   public getCartDetails(){
     return this.httpClient.get(this.PATH_OF_API+"/getCartDetails",{});
+  }
+  public deleteCart(cartId :number){
+    return this.httpClient.delete(this.PATH_OF_API+"/deleteCart/"+cartId);
   }
 }
