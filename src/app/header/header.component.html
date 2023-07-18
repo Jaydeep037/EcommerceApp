@@ -13,6 +13,7 @@ Login
 <mat-toolbar color="primary" *ngIf="isLoggedIn()">
   <button mat-raised-button color="primary" routerLink="/">Home</button>
   <button mat-raised-button *ngIf="!isAdmin()" color="primary" routerLink="/getCartDetails">Cart</button>
+  <button mat-raised-button *ngIf="!isAdmin()" color="primary" routerLink="/myorders">My Order</button>
   <button mat-raised-button *ngIf="isAdmin()" color="primary" routerLink="/addNewProduct" >Add New Product</button>
   <button mat-raised-button *ngIf="isAdmin()" color="primary" routerLink="/allProducts" >Show Product Details</button>
 </mat-toolbar>  

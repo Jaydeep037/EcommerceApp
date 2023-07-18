@@ -32,6 +32,7 @@ import { ProductViewDetailsComponent } from './product-view-details/product-view
 import { PlaceorderConfirmationComponent } from './placeorder-confirmation/placeorder-confirmation.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 
@@ -55,7 +56,8 @@ import { CartComponent } from './cart/cart.component';
     ProductViewDetailsComponent,
     PlaceorderConfirmationComponent,
     RegisterComponent,
-    CartComponent
+    CartComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
