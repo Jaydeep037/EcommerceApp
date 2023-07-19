@@ -54,7 +54,11 @@ export class ProductService {
   public getMyOrderDetails(){
     return this.httpClient.get<MyOrderDetails []>(this.PATH_OF_API+"/getOrderDetails");
   }
-  public getAllOrderDetail(){
-    return this.httpClient.get<MyOrderDetails[]>(this.PATH_OF_API+"/getAllOrders");
+  public getAllOrderDetail(status : string){
+    return this.httpClient.get<MyOrderDetails[]>(this.PATH_OF_API+"/getAllOrders/"+status);
+  }
+
+  public markAsDelivered(orderId : number){
+    return this.httpClient.get(this.PATH_OF_API+"/markAsDelivered/"+orderId);
   }
 }

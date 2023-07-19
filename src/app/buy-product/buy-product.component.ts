@@ -31,7 +31,7 @@ export class BuyProductComponent implements OnInit {
     this.isSingleProductCheckout = (isSingleProductCheckoutString === 'true');
     this.productDetails.forEach(
       x => this.orderDetails.orderProductQuantityList.push(
-        { productId: x.productId, quantity: 2 }
+        { productId: x.productId, quantity: 1 }
       )
     )
     
