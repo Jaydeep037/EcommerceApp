@@ -13,6 +13,10 @@ export class ProductService {
   
   PATH_OF_API = "http://localhost:9090";
 
+  createtransaction(amount :number){
+    return this.httpClient.get(this.PATH_OF_API+"/transaction/"+amount);
+  }
+
   addProduct(product : FormData){
     return this.httpClient.post<Product>(this.PATH_OF_API + "/addNewProduct",product)
   }
