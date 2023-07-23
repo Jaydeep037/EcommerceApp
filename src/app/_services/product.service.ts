@@ -1,19 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Product } from '../_model/product.model';
 import { OrderDetails } from '../_model/order-details.model';
 import { MyOrderDetails } from '../_model/order.model';
 import { environment } from 'src/environments/environment';
+import { environmentprod } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private apiUrl : string
 
-  constructor(private httpClient :  HttpClient) { }
+  constructor(private httpClient :  HttpClient)
+   {
+      this.apiUrl = isDevMode() ? environment.apiUrl : environmentprod.apiUrl;
+  }
   
   // apiUrl = "http://localhost:9090";
-  private apiUrl = environment.apiUrl;
 
 
   createtransaction(amount :number){
