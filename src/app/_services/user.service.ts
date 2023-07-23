@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
 import { User } from '../_model/user.model';
 import { environment } from 'src/environments/environment';
+import { environmentprod } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,16 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
 
-  private apiUrl = environment.apiUrl;
-  // apiUrl = "http://localhost:9090";
+  private apiUrl : string
 
   requestHeaders = new HttpHeaders(
     { "No-Auth": "True" }
   )
   constructor(private httpclient: HttpClient
     ,private userAuthService : UserAuthService
-    ) { }
+    ) { 
+      this.apiUrl = isDevMode() ? environment.apiUrl : environmentprod.apiUrl;
+    }
 
   public login(logindata: any) {
     return this.httpclient.post(this.apiUrl + "/authenticate", logindata, { headers: this.requestHeaders })
