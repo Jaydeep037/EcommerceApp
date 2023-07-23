@@ -2,13 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
 import { User } from '../_model/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  PATH_OF_API = "http://localhost:9090";
+
+  private apiUrl = environment.apiUrl;
+  // apiUrl = "http://localhost:9090";
 
   requestHeaders = new HttpHeaders(
     { "No-Auth": "True" }
@@ -18,15 +21,15 @@ export class UserService {
     ) { }
 
   public login(logindata: any) {
-    return this.httpclient.post(this.PATH_OF_API + "/authenticate", logindata, { headers: this.requestHeaders })
+    return this.httpclient.post(this.apiUrl + "/authenticate", logindata, { headers: this.requestHeaders })
   }
 
   public forUser(){
-    return this.httpclient.get(this.PATH_OF_API + '/forUser',{responseType : "text"});
+    return this.httpclient.get(this.apiUrl + '/forUser',{responseType : "text"});
   }
 
   public forAdmin(){
-    return this.httpclient.get(this.PATH_OF_API + '/forAdmin',{responseType : "text"});
+    return this.httpclient.get(this.apiUrl + '/forAdmin',{responseType : "text"});
   }
   
 
@@ -49,6 +52,6 @@ export class UserService {
   }
 
   public register (user : User) {
-    return this.httpclient.post(this.PATH_OF_API + '/registerNew',user);
+    return this.httpclient.post(this.apiUrl + '/registerNew',user);
   }
 }
