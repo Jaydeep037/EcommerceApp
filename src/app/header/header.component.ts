@@ -22,6 +22,13 @@ public isLoggedIn(){
 
 public logOut(){
   this.userAuthService.clear();
+  this.userService.logout().subscribe(
+    (response)=>{
+
+    },(error)=>{
+      console.log(error);
+    }
+  )
   this.router.navigate(['/']);
 }
 public roleMatch (requiredRoles: any[]): boolean{

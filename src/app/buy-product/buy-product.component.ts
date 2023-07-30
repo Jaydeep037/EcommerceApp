@@ -15,6 +15,7 @@ export class BuyProductComponent implements OnInit {
   productDetails: Product[] = [];
   orderDetails: OrderDetails = {
     fullName: '',
+    email : '',
     fullAddress: '',
     contactNumber: '',
     alternateContactNumber: '',

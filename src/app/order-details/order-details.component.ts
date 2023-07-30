@@ -8,7 +8,7 @@ import { MyOrderDetails } from '../_model/order.model';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  displayedColumns: string[] = ['Id','Product Name','Name','Address', 'Contact No.', 'Status','Actions'];
+  displayedColumns: string[] = ['Id','Product Name','Name','Email','Address', 'Contact No.', 'Status','Actions'];
   orderDetails : MyOrderDetails[] = [];
   constructor(private productService : ProductService){}
 

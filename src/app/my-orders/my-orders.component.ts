@@ -9,7 +9,7 @@ import { MyOrderDetails } from '../_model/order.model';
 })
 export class MyOrdersComponent implements OnInit {
   constructor(private productService : ProductService){}
-  displayedColumns : string[] =["Name","Address","Contact No.","Amount","Status"]
+  displayedColumns : string[] =["Name","Email","Address","Contact No.","Amount","Status"]
 
   orderDetails : MyOrderDetails[] = [];
 

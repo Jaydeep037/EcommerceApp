@@ -26,6 +26,10 @@ export class UserService {
     return this.httpclient.post(this.apiUrl + "/authenticate", logindata, { headers: this.requestHeaders })
   }
 
+  public logout(){
+    return this.httpclient.post(this.apiUrl+"/logout",{});
+  }
+
   public forUser(){
     return this.httpclient.get(this.apiUrl + '/forUser',{responseType : "text"});
   }
